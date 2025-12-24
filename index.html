@@ -181,17 +181,9 @@ p {
       document.body.style.transition = 'opacity 0.5s ease';
       document.body.style.opacity = '0';
       
-      // Wait for fade out, then show page 2
+      // Wait for fade out, then navigate to page 2
       setTimeout(() => {
-        // In real implementation, this would navigate to page2.html
-        // For this demo, we'll show an alert
-        alert('In actual implementation, this will navigate to page2.html with the enhanced birthday page!');
-        
-        // Reset opacity
-        document.body.style.opacity = '1';
-        
-        // Uncomment this line when you have page2.html ready:
-        // window.location.href = 'page2.html';
+        window.location.href = 'page2.html';
       }, 500);
     }
 
