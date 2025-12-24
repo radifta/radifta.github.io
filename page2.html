@@ -303,11 +303,16 @@
 <body>
     <div class="heart-bg" id="heartBg"></div>
 
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
         <h1>Happy Birthday, Pretty ✨</h1>
         
         <div class="image-container" onclick="createSparkles(event)">
-            <img src="https://via.placeholder.com/250/ff69b4/ffffff?text=Your+Photo" alt="Childhood Photo" id="mainPhoto">
+            <img src="child.jpg" alt="Childhood Photo" id="mainPhoto">
         </div>
 
         <div class="message">
@@ -403,7 +408,14 @@
 
         // Play music (simulated)
         function playMusic() {
-            alert('🎵 Playing a special song for you... 🎶\n(Imagine your favorite song is playing!)');
+            const audio = document.getElementById('bgMusic');
+            if (audio.paused) {
+                audio.play();
+                alert('🎵 Playing your special song... 🎶');
+            } else {
+                audio.pause();
+                alert('⏸️ Music paused');
+            }
         }
 
         // Launch confetti
@@ -426,7 +438,13 @@
 
         // Show special message
         function showMessage() {
-            alert('💌 Special Message:\n\nYou are someone truly extraordinary.\nEvery step you take is filled with courage.\nEvery smile you give brings happiness.\n\nHappy Birthday! 🎂✨');
+            // Fade out and navigate to page 3
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = 'page3.html';
+            }, 500);
         }
 
         // Initialize floating hearts on load
