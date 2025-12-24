@@ -23,7 +23,7 @@ body {
   align-items: center;
 }
 
-/* ===== TITLE ===== */
+/* TITLE */
 .title {
   position: absolute;
   top: 50px;
@@ -41,7 +41,7 @@ body {
   font-style: italic;
 }
 
-/* ===== INSTRUCTION ===== */
+/* INSTRUCTION */
 .instruction {
   position: absolute;
   top: 160px;
@@ -49,16 +49,15 @@ body {
   animation: pulse 2s infinite;
 }
 
-/* ===== TULIPS (INI YANG DIGESER) ===== */
+/* TULIPS */
 .tulips-container {
   display: flex;
-  gap: 100px;              /* lebih renggang */
+  gap: 100px;
   align-items: flex-end;
   position: absolute;
-  bottom: 180px;           /* 🔽 DITURUNKAN */
+  bottom: 180px;
 }
 
-/* ===== TULIP ===== */
 .tulip-container {
   position: relative;
   cursor: pointer;
@@ -120,20 +119,17 @@ body {
   transition: all 1s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
 
-/* PETAL POSITION */
 .petal-1 { left: 25px; z-index: 5; }
 .petal-2 { left: 10px; transform: rotate(-15deg); }
 .petal-3 { left: 40px; transform: rotate(15deg); }
 .petal-4 { left: 0; transform: rotate(-30deg); }
 .petal-5 { left: 50px; transform: rotate(30deg); }
 
-/* BLOOM */
 .tulip-container.bloomed .petal-2 { transform: rotate(-60deg) translateX(-15px); }
 .tulip-container.bloomed .petal-3 { transform: rotate(60deg) translateX(15px); }
 .tulip-container.bloomed .petal-4 { transform: rotate(-90deg) translateX(-25px); }
 .tulip-container.bloomed .petal-5 { transform: rotate(90deg) translateX(25px); }
 
-/* CENTER */
 .flower-center {
   position: absolute;
   width: 20px;
@@ -150,10 +146,10 @@ body {
   transform: translateX(-50%) scale(1);
 }
 
-/* ===== MESSAGE (IKUT TURUN) ===== */
+/* MESSAGE */
 .message {
   position: absolute;
-  bottom: 120px;           /* 🔽 DITURUNKAN */
+  bottom: 120px;
   font-size: 1.5em;
   color: #ff69b4;
   opacity: 0;
@@ -162,7 +158,7 @@ body {
 
 .final-message {
   position: absolute;
-  bottom: 60px;            /* 🔽 DITURUNKAN */
+  bottom: 60px;
   font-style: italic;
   color: #ff69b4;
   opacity: 0;
@@ -202,6 +198,8 @@ body {
 <div class="instruction">✨ Tap the tulips one by one ✨</div>
 
 <div class="tulips-container">
+
+  <!-- TULIP 1 -->
   <div class="tulip-container">
     <div class="flower">
       <div class="petal petal-1"></div>
@@ -217,15 +215,38 @@ body {
     </div>
   </div>
 
+  <!-- TULIP 2 -->
   <div class="tulip-container">
-    <div class="flower">...</div>
-    <div class="stem">...</div>
+    <div class="flower">
+      <div class="petal petal-1"></div>
+      <div class="petal petal-2"></div>
+      <div class="petal petal-3"></div>
+      <div class="petal petal-4"></div>
+      <div class="petal petal-5"></div>
+      <div class="flower-center"></div>
+    </div>
+    <div class="stem">
+      <div class="leaf leaf-left"></div>
+      <div class="leaf leaf-right"></div>
+    </div>
   </div>
 
+  <!-- TULIP 3 -->
   <div class="tulip-container">
-    <div class="flower">...</div>
-    <div class="stem">...</div>
+    <div class="flower">
+      <div class="petal petal-1"></div>
+      <div class="petal petal-2"></div>
+      <div class="petal petal-3"></div>
+      <div class="petal petal-4"></div>
+      <div class="petal petal-5"></div>
+      <div class="flower-center"></div>
+    </div>
+    <div class="stem">
+      <div class="leaf leaf-left"></div>
+      <div class="leaf leaf-right"></div>
+    </div>
   </div>
+
 </div>
 
 <div class="message">Just like these tulips, you make everything softer 💕</div>
@@ -235,7 +256,7 @@ body {
 document.querySelectorAll('.tulip-container').forEach(t => {
   t.onclick = () => {
     t.classList.add('bloomed');
-    if ([...document.querySelectorAll('.bloomed')].length === 3) {
+    if (document.querySelectorAll('.bloomed').length === 3) {
       document.body.classList.add('all-bloomed');
     }
   }
