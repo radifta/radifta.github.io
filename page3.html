@@ -1,165 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>A Letter for You</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(180deg, #fff1f7, #ffe4ef);
-      font-family: "Georgia", serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOUR BEAUTYYY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .wrapper {
-      max-width: 650px;
-      padding: 40px;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      animation: fadeIn 1.2s ease;
-    }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 25%, #ffa6ba 50%, #ff9fad 75%, #ff91a4 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
 
-    h1 {
-      font-size: 26px;
-      color: #b30059;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeIn 1s ease;
+        }
 
-    .intro {
-      font-size: 16px;
-      color: #5c0030;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+        .header h1 {
+            font-size: 3em;
+            color: white;
+            text-shadow: 3px 3px 6px rgba(255, 105, 180, 0.6);
+            margin-bottom: 10px;
+        }
 
-    .btn {
-      display: block;
-      margin: 0 auto 30px;
-      padding: 12px 26px;
-      border-radius: 999px;
-      border: none;
-      background: #ffd6e8;
-      color: #b30059;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+        .header p {
+            font-size: 1.3em;
+            color: #fff;
+            font-style: italic;
+        }
 
-    .btn:hover {
-      background: #ffc1db;
-      transform: scale(1.05);
-    }
+        .polaroid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            perspective: 1000px;
+        }
 
-    .letter {
-      display: none;
-      font-size: 16.5px;
-      line-height: 1.8;
-      color: #3d001f;
-      animation: slideUp 1s ease forwards;
-    }
+        .polaroid {
+            background: white;
+            padding: 15px;
+            padding-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
 
-    .letter p {
-      margin-bottom: 18px;
-    }
+        .polaroid:nth-child(1) {
+            transform: rotate(-5deg);
+            animation-delay: 0s;
+        }
 
-    .next {
-      display: none;
-      text-align: center;
-      margin-top: 30px;
-    }
+        .polaroid:nth-child(2) {
+            transform: rotate(3deg);
+            animation-delay: 1s;
+        }
 
-    .next a {
-      text-decoration: none;
-      font-size: 14px;
-      color: #b30059;
-    }
+        .polaroid:nth-child(3) {
+            transform: rotate(-3deg);
+            animation-delay: 2s;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .polaroid:nth-child(4) {
+            transform: rotate(4deg);
+            animation-delay: 3s;
+        }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        .polaroid:nth-child(5) {
+            transform: rotate(-4deg);
+            animation-delay: 4s;
+        }
+
+        .polaroid:nth-child(6) {
+            transform: rotate(2deg);
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(var(--rotation));
+            }
+            50% {
+                transform: translateY(-20px) rotate(var(--rotation));
+            }
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .polaroid img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+        }
+
+        .letter-section {
+            max-width: 800px;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            animation: slideUp 1s ease 0.5s both;
+            border: 3px solid #ffb6c1;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .letter-section h2 {
+            color: #ff69b4;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .letter-content {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            color: #ff69b4;
+            margin-top: 40px;
+            font-size: 1.3em;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px 15px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff85c1 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .buttons-container {
+            text-align: center;
+            margin: 40px auto;
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart-float {
+            position: fixed;
+            pointer-events: none;
+            animation: heartFloat 10s infinite;
+            opacity: 0;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .polaroid img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .letter-section {
+                padding: 40px 30px;
+            }
+
+            .letter-content {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <div class="wrapper">
-    <h1>For you, on your birthday</h1>
-    <p class="intro">
-      I wrote this slowly.  
-      Read it slowly too.
-    </p>
-
-    <button class="btn" onclick="openLetter()">open the letter</button>
-
-    <div class="letter" id="letter">
-      <p>
-        Happy sweet sixteen, pretty.  
-        I don’t know how to make this sound simple, so I won’t try.
-      </p>
-
-      <p>
-        Sixteen sounds soft, but you aren’t fragile.  
-        You’ve lived through things most people never talk about,  
-        and somehow you’re still kind, still gentle, still you.
-      </p>
-
-      <p>
-        This year was heavy. I know there were days you woke up tired already,  
-        nights where you had to be your own comfort.  
-        And yet, you kept going. Quietly. Bravely.
-      </p>
-
-      <p>
-        I’m so proud of you.  
-        Not just for surviving, but for staying warm in a world that tried to harden you.
-      </p>
-
-      <p>
-        You’re going to be an incredible psychologist someday.  
-        You listen with your whole heart. You make people feel seen.  
-        That’s not something you learn. That’s who you are.
-      </p>
-
-      <p>
-        Please remember this, okay?  
-        You don’t have to be strong all the time.  
-        You don’t have to carry everything alone.
-      </p>
-
-      <p>
-        I’m here.  
-        On the easy days, and the quiet hard ones too.  
-        No pressure. No conditions. Just here.
-      </p>
-
-      <p>
-        You are loved. Deeply. Softly. Truly.
-      </p>
+    <div class="header">
+        <h1>Your Beauty 💕</h1>
+        <p>You're the Most Beautiful Girl I've Ever seen<</p>
     </div>
 
-    <div class="next" id="next">
-      <a href="closing.html">go to the last page →</a>
+    <div class="polaroid-container">
+        <div class="polaroid">
+            <img src="photo1.jpg" alt="Memory 1">
+            <div class="polaroid-caption">Your brightest smile ✨</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo2.jpg" alt="Memory 2">
+            <div class="polaroid-caption">Your Beauty Eyes 🌸</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo3.jpg" alt="Memory 3">
+            <div class="polaroid-caption">Your Soft hair 🌈</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo4.jpg" alt="Memory 4">
+            <div class="polaroid-caption">Your light skin 💫</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo5.jpg" alt="Memory 5">
+            <div class="polaroid-caption">Your Pretty Face 🎀</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="photo6.jpg" alt="Memory 6">
+            <div class="polaroid-caption">Your soft heart 💖</div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    function openLetter() {
-      document.getElementById("letter").style.display = "block";
-      document.getElementById("next").style.display = "block";
-      document.querySelector(".btn").style.display = "none";
-    }
-  </script>
+    <div class="letter-section">
+        <h2>A Letter For You 💌</h2>
+        <div class="letter-content">
+            <p>Happy birthday to the most beautiful soul I know. I wish I could find better words to tell you how much you mean to me, but somehow "thank you for existing" feels like the truest thing I can say.</p>
+            
+            <p>Sixteen. It sounds so young, doesn't it? But when I look at you, I see someone who's already lived through storms most people your age never had to face. I see strength that grew quietly, in moments no one else witnessed—the kind that doesn't make noise, doesn't ask for applause. It just keeps you standing when everything else wanted you to fall.</p>
+            
+            <p>This year wasn't kind to you. I know that. There were mornings you woke up already tired, days where smiling felt like work, nights where you had to be your own comfort. And yet, somehow, you kept going. You kept trying. You kept being you. Do you know how rare that is? How incredible?</p>
+            
+            <p>Most people break and stay broken. But you? You break and then quietly put yourself back together, piece by piece. And maybe you don't see it, but I do. I see every little battle you've fought in silence. Every time you chose to keep going even when giving up felt easier.</p>
+            
+            <p>I'm so proud of you. Not just for surviving, but for staying soft in a world that keeps trying to make you hard. For still caring, still feeling, still loving deeply even after everything.</p>
+            
+            <p>You're going to be a psychologist someday. I just know it. You have this gift—this ability to make people feel seen. You listen like it matters. You care without making it about yourself. One day, you're going to sit across from someone who feels completely lost, and just by being you, you'll remind them that they're not alone. You'll be someone's turning point. Someone's safe place. And you'll be so, so good at it.</p>
+            
+            <p>But here's what I need you to know right now, at sixteen: You don't have to be strong all the time. You don't have to have everything figured out. It's okay to rest. It's okay to not be okay sometimes. It's okay to ask for help. You're allowed to take up space, to want things, to dream so big it scares you.</p>
+            
+            <p>I hope this year teaches you to be kinder to yourself. I hope you start seeing yourself the way I see you—not as someone who has to earn love by being perfect, but as someone who deserves it simply for being you. Because you are enough. Right now. As you are. Messy, tired, trying, dreaming, breaking, healing—enough.</p>
+            
+            <p>I hope 16 is gentler to you than 15 was. I hope you laugh more, worry less, and find little pockets of joy in places you didn't expect. And I hope you never forget how much you matter. You make everything brighter just by existing.</p>
+            
+            <p>So here's what I want you to know: I'm here. On good days and bad days. When you're flying and when you're falling. No pressure. No conditions. Just here. Always.</p>
+            
+            <p>Happy sweet sixteen, pretty. May this year be the beginning of something beautiful. May you find peace in the chaos. And may you always, always remember: You are so deeply loved. Not for what you do. Not for what you achieve. But for simply being you.</p>
+            
+            <p class="signature">
+                I'm so lucky to know you. 🌷
+            </p>
+        </div>
+    </div>
 
+    <div class="buttons-container">
+        <a href="celebration.html" class="back-button">← Back to Celebration</a>
+        <a href="tulip.html" class="back-button">Continue to Final Surprise →</a>
+    </div>
+
+    <script>
+        function createFloatingHearts() {
+            const hearts = ['💕', '💖', '💗', '💓', '💝', '🌸'];
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart-float';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 10000);
+            }, 2000);
+        }
+
+        document.querySelectorAll('.polaroid').forEach(polaroid => {
+            polaroid.addEventListener('click', function(event) {
+                for (let i = 0; i < 8; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.textContent = '✨';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = event.clientX + (Math.random() - 0.5) * 100 + 'px';
+                    sparkle.style.top = event.clientY + (Math.random() - 0.5) * 100 + 'px';
+                    sparkle.style.fontSize = '25px';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '1000';
+                    sparkle.style.animation = 'sparkleEffect 1s ease-out forwards';
+                    document.body.appendChild(sparkle);
+
+                    setTimeout(() => sparkle.remove(), 1000);
+                }
+            });
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleEffect {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1.5) rotate(180deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        window.onload = function() {
+            createFloatingHearts();
+        };
+    </script>
 </body>
 </html>
