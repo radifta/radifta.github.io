@@ -19,59 +19,37 @@ body {
   overflow: hidden;
 }
 
-/* FLOATING SHAPES */
-.shape {
+/* HEART SPAWN */
+.heart {
   position: absolute;
-  border-radius: 50%;
-  opacity: 0.25;
-  animation: float 12s infinite ease-in-out;
+  font-size: 14px;
+  animation: rise 1.2s ease forwards;
+  pointer-events: none;
 }
 
-.shape.one {
-  width: 120px;
-  height: 120px;
-  background: #ffb6c1;
-  top: 10%;
-  left: -40px;
+@keyframes rise {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(1.6);
+  }
 }
 
-.shape.two {
-  width: 80px;
-  height: 80px;
-  background: #ffd1e6;
-  bottom: 20%;
-  right: -30px;
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-  100% { transform: translateY(0); }
-}
-
+/* CARD */
 .wrapper {
   position: relative;
   text-align: center;
   max-width: 340px;
   padding: 42px 32px;
-  background: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.6);
   border-radius: 32px;
   box-shadow: 0 25px 45px rgba(255,182,193,0.45);
-  animation: fadeUp 1.2s ease;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* PHOTO */
 .photo {
   width: 140px;
   border-radius: 26px;
@@ -79,6 +57,11 @@ body {
   opacity: 0;
   transform: scale(0.85);
   animation: photoIn 1.2s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+.photo:active {
+  transform: scale(0.95);
 }
 
 @keyframes photoIn {
@@ -88,6 +71,14 @@ body {
   }
 }
 
+/* PROGRESS */
+.progress {
+  margin-top: 14px;
+  letter-spacing: 6px;
+  color: #d98ca6;
+}
+
+/* BUTTON */
 .btn {
   margin-top: 22px;
   padding: 10px 22px;
@@ -105,6 +96,7 @@ body {
   transform: scale(0.95);
 }
 
+/* TEXT */
 .text {
   margin-top: 18px;
   color: #4d0026;
@@ -119,47 +111,31 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* TULIP */
+.tulip {
+  font-size: 36px;
+  opacity: 0;
+  margin-top: 16px;
+  animation: bloom 1.2s ease forwards;
+}
+
+@keyframes bloom {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="shape one"></div>
-<div class="shape two"></div>
-
 <div class="wrapper">
 
   <img src="child.jpg" class="photo">
 
-  <button class="btn" onclick="reveal()">tap me ♡</button>
+  <div class="progress" id="progress">· · · ·</div>
+
+  <button class="btn" id="btn" onclick="nextStep()">tap me ♡</button>
 
   <div id="t1" class="text">
-    this little girl didn’t know how gentle yet strong she’d become.
-  </div>
-
-  <div id="t2" class="text">
-    she grew through things she never talked about,
-    and still chose to be kind.
-  </div>
-
-  <div id="t3" class="text">
-    I’m proud of her.
-    and I’m proud of you, right now.
-  </div>
-
-</div>
-
-<script>
-function reveal() {
-  document.getElementById("t1").classList.add("show");
-  setTimeout(() => {
-    document.getElementById("t2").classList.add("show");
-  }, 700);
-  setTimeout(() => {
-    document.getElementById("t3").classList.add("show");
-  }, 1400);
-}
-</script>
-
-</body>
-</html>
+    this little version of you didn’t know how strong she would b
