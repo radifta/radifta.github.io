@@ -12,35 +12,14 @@ body {
     radial-gradient(circle at 20% 20%, #ffe1ec 0%, transparent 40%),
     radial-gradient(circle at 80% 30%, #ffd6e8 0%, transparent 45%),
     linear-gradient(180deg, #fff0f6, #ffe6f0);
-  font-family: "Georgia", serif;
+  font-family: Georgia, serif;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-/* HEART SPAWN */
-.heart {
-  position: absolute;
-  font-size: 14px;
-  animation: rise 1.2s ease forwards;
-  pointer-events: none;
-}
-
-@keyframes rise {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-30px) scale(1.6);
-  }
-}
-
-/* CARD */
 .wrapper {
-  position: relative;
   text-align: center;
   max-width: 340px;
   padding: 42px 32px;
@@ -49,7 +28,6 @@ body {
   box-shadow: 0 25px 45px rgba(255,182,193,0.45);
 }
 
-/* PHOTO */
 .photo {
   width: 140px;
   border-radius: 26px;
@@ -57,11 +35,6 @@ body {
   opacity: 0;
   transform: scale(0.85);
   animation: photoIn 1.2s ease forwards;
-  transition: transform 0.3s ease;
-}
-
-.photo:active {
-  transform: scale(0.95);
 }
 
 @keyframes photoIn {
@@ -71,14 +44,12 @@ body {
   }
 }
 
-/* PROGRESS */
 .progress {
   margin-top: 14px;
   letter-spacing: 6px;
   color: #d98ca6;
 }
 
-/* BUTTON */
 .btn {
   margin-top: 22px;
   padding: 10px 22px;
@@ -89,14 +60,8 @@ body {
   font-size: 13px;
   box-shadow: 0 10px 25px rgba(255,182,193,0.6);
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.btn:active {
-  transform: scale(0.95);
-}
-
-/* TEXT */
 .text {
   margin-top: 18px;
   color: #4d0026;
@@ -112,17 +77,11 @@ body {
   transform: translateY(0);
 }
 
-/* TULIP */
 .tulip {
   font-size: 36px;
   opacity: 0;
   margin-top: 16px;
-  animation: bloom 1.2s ease forwards;
-}
-
-@keyframes bloom {
-  from { transform: scale(0.3); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  transition: opacity 1s ease;
 }
 </style>
 </head>
@@ -138,4 +97,56 @@ body {
   <button class="btn" id="btn" onclick="nextStep()">tap me ♡</button>
 
   <div id="t1" class="text">
-    this little version of you didn’t know how strong she would b
+    this little version of you did not know how strong she would become.
+  </div>
+
+  <div id="t2" class="text">
+    she grew quietly, through things she never talked about.
+  </div>
+
+  <div id="t3" class="text">
+    I am proud of who you were, and even prouder of who you are now.
+  </div>
+
+  <div id="tulip" class="tulip">🌷</div>
+
+</div>
+
+<script>
+let step = 0;
+
+function nextStep() {
+  step++;
+
+  const btn = document.getElementById("btn");
+  const progress = document.getElementById("progress");
+
+  if (step === 1) {
+    document.getElementById("t1").classList.add("show");
+    btn.innerText = "keep going ♡";
+    progress.innerText = "● · · ·";
+  }
+
+  if (step === 2) {
+    document.getElementById("t2").classList.add("show");
+    btn.innerText = "a little more ♡";
+    progress.innerText = "● ● · ·";
+  }
+
+  if (step === 3) {
+    document.getElementById("t3").classList.add("show");
+    btn.innerText = "one last thing ♡";
+    progress.innerText = "● ● ● ·";
+  }
+
+  if (step === 4) {
+    document.getElementById("tulip").style.opacity = 1;
+    btn.innerText = "for you 🌷";
+    progress.innerText = "● ● ● ●";
+    btn.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>
