@@ -4,46 +4,62 @@
   <title>For You</title>
   <style>
     body {
-    background: linear-gradient(180deg, #ffe6f0, #fff5fa);
-    font-family: "Georgia", serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-  }
-  .box {
-    padding: 40px;
-  }
-  p {
-    font-size: 18px;
-    color: #4d0026;
-    line-height: 1.6;
-  }
-  .dot {
-    margin-top: 16px;
-    font-size: 20px;
-    letter-spacing: 6px;
-    color: #d98ca6;
-  }
-  a {
-    display: inline-block;
-    margin-top: 28px;
-    text-decoration: none;
-    color: #b30059;
-    font-weight: bold;
-    font-size: 13px;
-  }
-</style>
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,182,193,0.25) 2px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(255,182,193,0.25) 2px, transparent 2px),
+        linear-gradient(180deg, #ffe6f0, #fff5fa);
+      background-size: 40px 40px, 40px 40px, cover;
+      font-family: "Georgia", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.75);
+      padding: 48px 44px;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      max-width: 320px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #4d0026;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .divider {
+      margin: 18px 0;
+      font-size: 18px;
+      letter-spacing: 6px;
+      color: #d98ca6;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 26px;
+      text-decoration: none;
+      color: #b30059;
+      font-weight: bold;
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
- <div class="box">
-  <p>
-    HAPPY BIRTHDAY PRETTY,<br>
-    this is something small, but sincere.
-  </p>
-  <div class="dot">· · ·</div>
-  <a href="page2.html">next</a>
-</div>
+  <div class="card">
+    <p>
+      HAPPY BIRTHDAY PRETTY,<br>
+      this is something small, but sincere.
+    </p>
+
+    <div class="divider">✿ ✿ ✿</div>
+
+    <a href="page2.html">next</a>
+  </div>
 </body>
 </html>
