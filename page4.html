@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Tulip For You 🌷</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffeef8, #ffe0f0, #ffd4e8);
+  font-family: Georgia, serif;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== TITLE ===== */
+.title {
+  position: absolute;
+  top: 50px;
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+
+.title h1 {
+  font-size: 3em;
+  color: #ff69b4;
+}
+
+.title p {
+  color: #ff85c1;
+  font-style: italic;
+}
+
+/* ===== INSTRUCTION ===== */
+.instruction {
+  position: absolute;
+  top: 160px;
+  color: #ff69b4;
+  animation: pulse 2s infinite;
+}
+
+/* ===== TULIPS (INI YANG DIGESER) ===== */
+.tulips-container {
+  display: flex;
+  gap: 100px;              /* lebih renggang */
+  align-items: flex-end;
+  position: absolute;
+  bottom: 180px;           /* 🔽 DITURUNKAN */
+}
+
+/* ===== TULIP ===== */
+.tulip-container {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.tulip-container:hover {
+  transform: scale(1.05);
+}
+
+/* STEM */
+.stem {
+  width: 8px;
+  height: 200px;
+  background: linear-gradient(180deg, #4a7c59, #5a9b6b);
+  border-radius: 4px;
+  position: relative;
+  animation: growStem 1.5s ease-out;
+}
+
+/* LEAF */
+.leaf {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background: linear-gradient(135deg, #4a7c59, #6bb582);
+  border-radius: 50% 0 50% 0;
+}
+
+.leaf-left {
+  left: -50px;
+  top: 100px;
+  transform: rotate(-45deg);
+}
+
+.leaf-right {
+  right: -50px;
+  top: 120px;
+  transform: rotate(45deg) scaleX(-1);
+}
+
+/* FLOWER */
+.flower {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+}
+
+.petal {
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background: linear-gradient(135deg, #ff69b4, #ff85c1, #ffb3d9);
+  border-radius: 50%;
+  transform-origin: bottom center;
+  transition: all 1s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+/* PETAL POSITION */
+.petal-1 { left: 25px; z-index: 5; }
+.petal-2 { left: 10px; transform: rotate(-15deg); }
+.petal-3 { left: 40px; transform: rotate(15deg); }
+.petal-4 { left: 0; transform: rotate(-30deg); }
+.petal-5 { left: 50px; transform: rotate(30deg); }
+
+/* BLOOM */
+.tulip-container.bloomed .petal-2 { transform: rotate(-60deg) translateX(-15px); }
+.tulip-container.bloomed .petal-3 { transform: rotate(60deg) translateX(15px); }
+.tulip-container.bloomed .petal-4 { transform: rotate(-90deg) translateX(-25px); }
+.tulip-container.bloomed .petal-5 { transform: rotate(90deg) translateX(25px); }
+
+/* CENTER */
+.flower-center {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ffd700, #ffed4e);
+  border-radius: 50%;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: 1s ease 0.5s;
+}
+
+.tulip-container.bloomed .flower-center {
+  transform: translateX(-50%) scale(1);
+}
+
+/* ===== MESSAGE (IKUT TURUN) ===== */
+.message {
+  position: absolute;
+  bottom: 120px;           /* 🔽 DITURUNKAN */
+  font-size: 1.5em;
+  color: #ff69b4;
+  opacity: 0;
+  transition: 1s;
+}
+
+.final-message {
+  position: absolute;
+  bottom: 60px;            /* 🔽 DITURUNKAN */
+  font-style: italic;
+  color: #ff69b4;
+  opacity: 0;
+  transition: 1s ease 1s;
+}
+
+.all-bloomed .message,
+.all-bloomed .final-message {
+  opacity: 1;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes growStem {
+  from { height: 0; }
+  to { height: 200px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">
+  <h1>Three Tulips For You 🌷</h1>
+  <p>Click each tulip to make them bloom</p>
+</div>
+
+<div class="instruction">✨ Tap the tulips one by one ✨</div>
+
+<div class="tulips-container">
+  <div class="tulip-container">
+    <div class="flower">
+      <div class="petal petal-1"></div>
+      <div class="petal petal-2"></div>
+      <div class="petal petal-3"></div>
+      <div class="petal petal-4"></div>
+      <div class="petal petal-5"></div>
+      <div class="flower-center"></div>
+    </div>
+    <div class="stem">
+      <div class="leaf leaf-left"></div>
+      <div class="leaf leaf-right"></div>
+    </div>
+  </div>
+
+  <div class="tulip-container">
+    <div class="flower">...</div>
+    <div class="stem">...</div>
+  </div>
+
+  <div class="tulip-container">
+    <div class="flower">...</div>
+    <div class="stem">...</div>
+  </div>
+</div>
+
+<div class="message">Just like these tulips, you make everything softer 💕</div>
+<div class="final-message">Happy Sweet Sixteen 🌷</div>
+
+<script>
+document.querySelectorAll('.tulip-container').forEach(t => {
+  t.onclick = () => {
+    t.classList.add('bloomed');
+    if ([...document.querySelectorAll('.bloomed')].length === 3) {
+      document.body.classList.add('all-bloomed');
+    }
+  }
+});
+</script>
+
+</body>
+</html>
