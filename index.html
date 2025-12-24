@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>For You</title>
+
   <style>
     body {
       background:
@@ -18,23 +19,37 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.75);
-      padding: 48px 44px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 48px 42px;
       border-radius: 28px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      max-width: 320px;
+      max-width: 340px;
     }
 
-    p {
-      font-size: 18px;
-      color: #4d0026;
-      line-height: 1.7;
+    /* TEKS UTAMA (BUBBLE / 3D HALUS) */
+    .bubble-text {
+      font-size: 21px;
+      line-height: 1.6;
+      letter-spacing: 0.6px;
+      background: linear-gradient(180deg, #ff5f9e, #b30059);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 2px 4px rgba(255, 105, 180, 0.35),
+        0 6px 12px rgba(179, 0, 89, 0.25);
       margin: 0;
+    }
+
+    .soft-text {
+      margin-top: 14px;
+      font-size: 14px;
+      color: #7a003c;
+      line-height: 1.5;
     }
 
     .divider {
       margin: 18px 0;
-      font-size: 18px;
+      font-size: 16px;
       letter-spacing: 6px;
       color: #d98ca6;
     }
@@ -52,9 +67,11 @@
 
 <body>
   <div class="card">
-    <p>
-      HAPPY BIRTHDAY PRETTY,<br>
-      this is something small, but sincere.
+    <p class="bubble-text">
+      HAPPY BIRTHDAY PRETTY
+    </p>
+    <p class="soft-text">
+      this is something small, just for you.
     </p>
 
     <div class="divider">✿ ✿ ✿</div>
