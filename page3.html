@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Letter for You</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #fff1f7, #ffe4ef);
+      font-family: "Georgia", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      max-width: 650px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #b30059;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-size: 16px;
+      color: #5c0030;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: block;
+      margin: 0 auto 30px;
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: none;
+      background: #ffd6e8;
+      color: #b30059;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ffc1db;
+      transform: scale(1.05);
+    }
+
+    .letter {
+      display: none;
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: #3d001f;
+      animation: slideUp 1s ease forwards;
+    }
+
+    .letter p {
+      margin-bottom: 18px;
+    }
+
+    .next {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .next a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #b30059;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>For you, on your birthday</h1>
+    <p class="intro">
+      I wrote this slowly.  
+      Read it slowly too.
+    </p>
+
+    <button class="btn" onclick="openLetter()">open the letter</button>
+
+    <div class="letter" id="letter">
+      <p>
+        Happy sweet sixteen, pretty.  
+        I don’t know how to make this sound simple, so I won’t try.
+      </p>
+
+      <p>
+        Sixteen sounds soft, but you aren’t fragile.  
+        You’ve lived through things most people never talk about,  
+        and somehow you’re still kind, still gentle, still you.
+      </p>
+
+      <p>
+        This year was heavy. I know there were days you woke up tired already,  
+        nights where you had to be your own comfort.  
+        And yet, you kept going. Quietly. Bravely.
+      </p>
+
+      <p>
+        I’m so proud of you.  
+        Not just for surviving, but for staying warm in a world that tried to harden you.
+      </p>
+
+      <p>
+        You’re going to be an incredible psychologist someday.  
+        You listen with your whole heart. You make people feel seen.  
+        That’s not something you learn. That’s who you are.
+      </p>
+
+      <p>
+        Please remember this, okay?  
+        You don’t have to be strong all the time.  
+        You don’t have to carry everything alone.
+      </p>
+
+      <p>
+        I’m here.  
+        On the easy days, and the quiet hard ones too.  
+        No pressure. No conditions. Just here.
+      </p>
+
+      <p>
+        You are loved. Deeply. Softly. Truly.
+      </p>
+    </div>
+
+    <div class="next" id="next">
+      <a href="closing.html">go to the last page →</a>
+    </div>
+  </div>
+
+  <script>
+    function openLetter() {
+      document.getElementById("letter").style.display = "block";
+      document.getElementById("next").style.display = "block";
+      document.querySelector(".btn").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
